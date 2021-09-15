@@ -15,7 +15,7 @@ spec:
       env:
         -
           name: author
-          value: Ganimedes
+          value: Laura
       image: lauraherreros/phpinfo:latest
       name: phpinfo-container
       ports:
