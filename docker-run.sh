@@ -16,7 +16,7 @@ docker image build \
 
 docker network create phpinfo
 docker container run \
-  --cpus '0.1'
+  --cpus '0.1' \
   --detach \
   --entrypoint /usr/bin/php \
   --env author=Ganimedes \
@@ -28,20 +28,15 @@ docker container run \
   --read-only \
   --restart always \
   --user nobody \
-  --volume ./src/index.php:/app/index.php:ro \
+  --volume ${PWD}/src/index.php:/app/index.php:ro \
   --workdir /app/ \
   local/phpinfo:test \
   -f /src/index.php \
   -S 0.0.0.0:8080 \
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+  
+## docker container ls
+## docker container ls --no-trunc
+## docker container top phpinfo
+## docker container stats phpinfo --no-stream
+## docker container logs phpinfo
+## docker container logs phpinfo --follow
