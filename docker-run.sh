@@ -18,6 +18,6 @@ docker container run \
 --read-only \
 --restart always  \
 --user nobody \
---volume ./src/:/src/:ro \
+--volume ./src/index.php:/src/:ro \
 --workdir /app/ \
 local/phpinfo:test \
