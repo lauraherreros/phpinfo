@@ -5,9 +5,10 @@ cd phpinfo
 git checkout lauraherreros_santander092021
 
 docker image build \
- --file ./Dockerfile \
- --no-cache \
- --tag local/phpinfo:test \
+  --file ./Dockerfile \
+  --no-cache \
+  --tag local\phpinfo:test \
+  ./
  
  
 docker network create phpinfo
