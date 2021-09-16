@@ -1,8 +1,7 @@
-
 apiVersion: v1
 kind: Pod
 metadata:
-  name: phpinfo-po
+  name: phpinfo-po-wget
 spec:
   containers:
     -
@@ -39,19 +38,16 @@ spec:
   initContainers:
     -
       args:
-        - git clone https://github.com/lauraherreros/phpinfo ;
-        - cd phpinfo ;
-        - git checkout lauraherreros_santander092021 ;
-        - cp -r src/index.php /public/ ;
+        - wget https://raw.githubusercontent.com/ganimedes-colomar/phpinfo/2021-09-santander/src/index.php ;
       command:
         - /bin/sh
         - -c
       env:
         -
           name: author
-          value: Laura
-      image: alpine/git:1.0.30@sha256:0595334722a2d486ed7c1a10a9138180f052343d5569942ecceb88d6e7fd1c0f
-      name: phpinfo-git
+          value: Ganimedes
+      image: library/busybox:1.33.1-uclibc@sha256:febcf61cd6e1ac9628f6ac14fa40836d16f3c6ddef3b303ff0321606e55ddd0b
+      name: phpinfo-wget
       resources:
         limits:
           cpu: 100m
@@ -61,23 +57,14 @@ spec:
           memory: 100M
       volumeMounts:
         -
-          mountPath: /private/
-          name: private
-          readOnly: false
-        -
           mountPath: /public/
           name: public
           readOnly: false
-      workingDir: /private/
+      workingDir: /public/
   volumes:
     -
       emptyDir:
-        medium: Memory
-        sizeLimit: 1M
-      name: private
-    -
-      emptyDir:
-        medium: Memory
+        medium: ""
         sizeLimit: 1M
       name: public
 status: {}
